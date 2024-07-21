@@ -1,0 +1,12 @@
+/bin
+/vendor
+/tools
+/tmp
+.idea
+.phpunit.cache
+.phpunit.result.cache
+infection.log
+*.drawio.bkp
+*.drawio.dtmp
+.env
+phpunit.xml

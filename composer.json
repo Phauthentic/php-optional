@@ -1,0 +1,75 @@
+{
+    "name": "phauthentic/optional",
+    "description": "PHP version of Javas Optional class, used to represent a container object which may or may not contain a non-null value.",
+    "keywords": [
+        "optional", "php", "oop", "library", "utility"
+    ],
+    "type": "library",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.10",
+        "phpmd/phpmd": "^2.15",
+        "infection/infection": "^0.29.6",
+        "phpunit/phpunit": "^11.2",
+        "phpstan/phpstan": "^1.11"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Phauthentic\\Optional\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phauthentic\\Optional\\Test\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Florian Krämer"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ],
+        "infection": [
+            "infection"
+        ],
+        "test-coverage": [
+            "phpunit --coverage-text"
+        ],
+        "test-coverage-html": [
+            "phpunit --coverage-html tmp/coverage/"
+        ],
+        "cscheck": [
+            "phpcs src/ tests/ --standard=PSR12 -s"
+        ],
+        "csfix": [
+            "phpcbf src/ tests/ --standard=PSR12"
+        ],
+        "analyze": [
+            "phpstan analyse src/"
+        ],
+        "phpmd": [
+            "bin/phpmd ./src text cleancode,codesize,controversial,design"
+        ],
+        "benchmark": [
+            "bin/phpbench run tests/Benchmark/ --report=aggregate"
+        ],
+        "all": [
+            "@csfix",
+            "@cscheck",
+            "@analyze",
+            "@test"
+        ]
+    }
+}
